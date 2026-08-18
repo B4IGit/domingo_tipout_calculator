@@ -1,13 +1,42 @@
-import {StyleSheet, Text, View} from 'react-native';
+import React, { useRef } from 'react';
+import { StyleSheet, Text, View, Animated, Easing } from 'react-native';
+import HomeAnimation from '../components/HomeAnimation';
 
 const Home = () => {
+    const textAnim = useRef(new Animated.Value(0)).current;
+
+    const handleAnimationComplete = () => {
+        Animated.timing(textAnim, {
+            toValue: 1,
+            duration: 600,
+            easing: Easing.out(Easing.ease), // Smooth ease-out curve
+            useNativeDriver: true,
+        }).start();
+    };
+
+    const textAnimatedStyle = {
+        opacity: textAnim,
+        transform: [
+            {
+                translateY: textAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [15, 0], // Slight slide-up effect
+                }),
+            },
+        ],
+    };
+
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Domingo Restaurante</Text>
-            <Text>Tip out calculations made simple.</Text>
+            <HomeAnimation onComplete={handleAnimationComplete} />
+            <Animated.View style={[styles.textWrapper, textAnimatedStyle]}>
+                <Text style={styles.title}>Domingo Restaurante</Text>
+                <Text style={styles.text}>Tip out calculations made simple.</Text>
+            </Animated.View>
         </View>
-    )
-}
+    );
+};
+
 export default Home;
 
 const styles = StyleSheet.create({
@@ -16,9 +45,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    textWrapper: {
+        alignItems: 'center',
+        marginTop: 24,
+    },
     title: {
-        color: '#A34535',
+        color: '#F26419',
         fontWeight: 'bold',
-        fontSize: 24
-    }
-})
+        fontSize: 30,
+    },
+    text: {
+        color: '#666666',
+        marginTop: 6,
+        fontSize: 16,
+    },
+});
