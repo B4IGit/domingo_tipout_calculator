@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "domingoapp",
     "name": "domingo_tipout_calculator",
     "slug": "domingo_tipout_calculator",
     "version": "1.0.0",
@@ -7,10 +8,11 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "backgroundColor": "#EBEAE9",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#EBEAE9"
     },
     "ios": {
       "supportsTablet": true
@@ -24,6 +26,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
