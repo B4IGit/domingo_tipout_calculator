@@ -12,12 +12,13 @@ export const Colors = {
         uiBackground: '#2f2b3d',
     },
     light: {
-        text: '#625f72',
-        title: '#201e2b',
+        textLight: '#666666',
+        textDark: '#232323',
+        title: '#F26419',
         background: '#e0dfe8',
         navBackground: '#e8e7ef',
         iconColor: '#686477',
         iconColorFocused: '#201e2b',
-        uiBackground: '#d6d5e1',
+        uiBackground: '#F26419',
     },
 }
