@@ -1,11 +1,14 @@
 import React, { useRef } from 'react';
-import { StyleSheet, Text, View, Animated, Easing } from 'react-native';
+import {StyleSheet, Text, View, Animated, Easing, useColorScheme} from 'react-native';
 import HomeAnimation from '../components/HomeAnimation';
 import { Link } from 'expo-router';
+import { Colors } from "../constants/Colors";
 
 const AnimatedLink = Animated.createAnimatedComponent(Link);
 
 const Home = () => {
+    const colorScheme = useColorScheme();
+    const theme = Colors[colorScheme] ?? Colors.light;
     const textAnim = useRef(new Animated.Value(0)).current;
     const linkAnim = useRef(new Animated.Value(0)).current;
 
@@ -54,15 +57,15 @@ const Home = () => {
         <View style={styles.container}>
             <HomeAnimation onComplete={handleAnimationComplete} />
             <Animated.View style={[styles.textWrapper, textAnimatedStyle]}>
-                <Text style={styles.title}>
+                <Text style={[styles.title, { color: theme.title}]}>
                     Domingo Restaurante
                 </Text>
-                <Text style={styles.text}>
+                <Text style={[ styles.text, { color: theme.textLight} ]}>
                     Tip out calculations made simple.
                 </Text>
             </Animated.View>
 
-            <AnimatedLink href="/login" style={[styles.link, linkAnimatedStyle]}>
+            <AnimatedLink href="/login" style={[styles.link, { borderColor: theme.uiBackground, color: theme.textDark }, linkAnimatedStyle]}>
                 Login
             </AnimatedLink>
         </View>
@@ -83,12 +86,10 @@ const styles = StyleSheet.create({
         marginTop: 24,
     },
     title: {
-        color: '#F26419',
         fontWeight: 'bold',
         fontSize: 30,
     },
     text: {
-        color: '#666666',
         marginTop: 6,
         fontSize: 16,
     },
@@ -99,7 +100,6 @@ const styles = StyleSheet.create({
         right: 50,
         padding: 24,
         borderWidth: 2,
-        borderColor: '#F26419',
         borderRadius: 8,
         textAlign: 'center',
         fontSize: 16,
