@@ -4,6 +4,9 @@ import HomeAnimation from '../components/HomeAnimation';
 import { Link } from 'expo-router';
 import { Colors } from "../constants/Colors";
 
+// themed components
+import ThemedView from "../components/themedView";
+
 const AnimatedLink = Animated.createAnimatedComponent(Link);
 
 const Home = () => {
@@ -54,7 +57,7 @@ const Home = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <ThemedView style={styles.container}>
             <HomeAnimation onComplete={handleAnimationComplete} />
             <Animated.View style={[styles.textWrapper, textAnimatedStyle]}>
                 <Text style={[styles.title, { color: theme.title}]}>
@@ -68,7 +71,7 @@ const Home = () => {
             <AnimatedLink href="/login" style={[styles.link, { borderColor: theme.uiBackground, color: theme.textDark }, linkAnimatedStyle]}>
                 Login
             </AnimatedLink>
-        </View>
+        </ThemedView>
     );
 };
 
