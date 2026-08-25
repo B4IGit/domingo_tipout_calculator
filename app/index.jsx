@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, {useRef} from 'react';
 import {StyleSheet, Text, View, Animated, Easing, useColorScheme} from 'react-native';
 import HomeAnimation from '../components/HomeAnimation';
-import { Link } from 'expo-router';
-import { Colors } from "../constants/Colors";
+import {Link} from 'expo-router';
+import {Colors} from "../constants/Colors";
 
 // themed components
 import ThemedView from "../components/themedView";
@@ -54,21 +54,24 @@ const Home = () => {
                 })
             }
         ]
-    }
+    };
 
     return (
         <ThemedView style={styles.container}>
-            <HomeAnimation onComplete={handleAnimationComplete} />
+            <HomeAnimation onComplete={handleAnimationComplete}/>
             <Animated.View style={[styles.textWrapper, textAnimatedStyle]}>
-                <Text style={[styles.title, { color: theme.title}]}>
+                <Text style={[styles.title, {color: theme.title}]}>
                     Domingo Restaurante
                 </Text>
-                <Text style={[ styles.text, { color: theme.textLight} ]}>
+                <Text style={[styles.text, {color: theme.textLight}]}>
                     Tip out calculations made simple.
                 </Text>
             </Animated.View>
 
-            <AnimatedLink href="/login" style={[styles.link, { borderColor: theme.uiBackground, color: theme.textDark }, linkAnimatedStyle]}>
+            <AnimatedLink href="/login" style={[styles.link, {
+                backgroundColor: theme.uiBackground,
+                color: theme.background
+            }, linkAnimatedStyle]}>
                 Login
             </AnimatedLink>
         </ThemedView>
@@ -101,11 +104,10 @@ const styles = StyleSheet.create({
         bottom: 100,
         left: 50,
         right: 50,
-        padding: 24,
-        borderWidth: 2,
+        padding: 20,
         borderRadius: 8,
         textAlign: 'center',
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: '700'
     }
 });
