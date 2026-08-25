@@ -1,12 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { Link } from 'expo-router';
+import {StyleSheet, Text, View, useColorScheme} from 'react-native';
+import {Link} from 'expo-router';
+import {Colors} from "../../constants/Colors";
+
+// themed components
+import ThemedView from "../../components/themedView";
 
 const Login = () => {
+    const colorScheme = useColorScheme();
+    const theme = Colors[colorScheme] ?? Colors.light;
+
     return (
-        <View style={styles.container}>
+        <ThemedView style={styles.container}>
             <Text style={styles.title}>Login Page</Text>
-            <Link href="/">Back to Home</Link>
-        </View>
+            <Link href="/" style={[{color: theme.textLight}]}>Back to Home</Link>
+        </ThemedView>
     );
 };
 export default Login;
