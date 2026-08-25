@@ -4,8 +4,8 @@ export const Colors = {
 
     dark: {
         textLight: '#7a7474',
-        textDark: '#cdcdcd',
-        title: '#e3d9d5',
+        textDark: '#f3f0f0',
+        title: '#b6b2b0',
         background: '#101010',
         navBackground: '#201e2b',
         iconColor: '#9591a5',
@@ -22,4 +22,4 @@ export const Colors = {
         iconColorFocused: '#201e2b',
         uiBackground: '#F26419',
     },
-}
+};
